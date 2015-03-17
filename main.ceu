@@ -1,0 +1,6 @@
+native _printf();
+par/and do
+_printf("Working!\n");
+with
+await 1s;
+end
