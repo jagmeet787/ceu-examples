@@ -1,0 +1,28 @@
+var int v1, v2, v3;
+event void v1_evt, v2_evt, v3_evt;
+par do
+	loop do
+		_printf("v1 = %d\n", v1);
+		await v1_evt;
+		v2 = v1 + 1;
+		_printf("v2 = %d\n", v2);
+		emit v2_evt;
+	end
+with
+	loop do
+		await v2_evt;
+		v3 = v2 * 2;
+		_printf("v3 = %d\n", v3);
+		emit v3_evt;
+	end
+with
+	loop do
+		v1 = 10;
+		_printf("changing to 10 v1 = %d\n", v1);
+		emit v1_evt;
+		v1 = 15;
+		_printf("changing to 15 v1 = %d\n", v1);
+		emit v1_evt;
+		_printf(" At end v1 = %d\n", v1); 
+	end
+end

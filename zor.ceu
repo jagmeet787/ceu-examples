@@ -1,0 +1,13 @@
+native _printf();
+
+loop do
+	par/or do
+		loop do
+		  await 1s;
+		  _printf("1 sec\n");
+		end
+	with
+		await 1s;
+		_printf("2 sec\n");
+	end
+end
